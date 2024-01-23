@@ -1,14 +1,14 @@
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+import NavBar from './NavBar';
+import Footer from './Footer';
 
 const Layout = ({ children }) => {
-	return (
-		<section className="mb-48">
-			<NavBar />
-			{children}
-			<Footer />
-		</section>
-	);
+  return (
+    <section className='mb-0'>
+      <NavBar />
+      {children}
+      <Footer />
+    </section>
+  );
 };
 
 export default Layout;

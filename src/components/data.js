@@ -19,6 +19,10 @@ const JobListDat = [
     ],
     location: 'Boston MA',
     image: 'images/acme.png',
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Eligendi non reprehenderit facilis architecto autem quam
+                  necessitatibus, odit quod, repellendus voluptate cum.
+                  Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
   {
     id: 2,
@@ -40,6 +44,10 @@ const JobListDat = [
     ],
     location: ' Lawrence, MA',
     image: 'images/stark.png',
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Eligendi non reprehenderit facilis architecto autem quam
+                  necessitatibus, odit quod, repellendus voluptate cum.
+                  Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
   {
     id: 3,
@@ -61,6 +69,10 @@ const JobListDat = [
     ],
     location: 'Newark, NJ',
     image: 'images/wayne.png',
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Eligendi non reprehenderit facilis architecto autem quam
+                  necessitatibus, odit quod, repellendus voluptate cum.
+                  Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
   {
     id: 4,
@@ -75,10 +87,13 @@ const JobListDat = [
         id: 2,
         tag: 'Node js',
       },
-     
     ],
     location: 'Daytona, FL',
     image: 'images/skynet.png',
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Eligendi non reprehenderit facilis architecto autem quam
+                  necessitatibus, odit quod, repellendus voluptate cum.
+                  Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
   {
     id: 5,
@@ -100,6 +115,10 @@ const JobListDat = [
     ],
     location: 'Boston M,A',
     image: 'images/wonka.png',
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Eligendi non reprehenderit facilis architecto autem quam
+                  necessitatibus, odit quod, repellendus voluptate cum.
+                  Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
 ];
 export default JobListDat;

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import JobListData from './data';
 
 const JobList = () => {
@@ -13,22 +14,22 @@ const JobList = () => {
             <div className='flex'>
               <img className='job-pic w-48 mr-6 ' src={image} alt={title} />
               <div>
-                <h3 className='text-2xl'>
-                  <a href='show.html'>{title}</a>
+                <h3 className='text-xl transition-all hover:text-blue-500 hover:underline'>
+                  <Link to={`/job-detail/${id}`}>{title}</Link>
                 </h3>
-                <div className='text-xl font-bold mb-4'>{company}</div>
+                <div className='text-lg font-medium mb-4'>{company}</div>
                 <ul className='flex'>
                   {Array.isArray(item.tags) &&
                     item.tags.map((tag) => (
                       <li
-                        className='flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs'
+                        className='flex items-center justify-center text-white rounded-xl py-1 px-3 mr-2 text-xs transition ease-in-out delay-150 bg-blue-500  hover:scale-110 hover:bg-indigo-500 duration-300'
                         key={tag.id}
                       >
                         {tag.tag}
                       </li>
                     ))}
                 </ul>
-                <div className='text-lg mt-4'>
+                <div className='text-sm mt-4'>
                   <i className='fa-solid fa-location-dot'></i> {location}
                 </div>
               </div>

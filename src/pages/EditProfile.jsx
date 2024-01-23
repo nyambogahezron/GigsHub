@@ -2,7 +2,7 @@ import FormInputRow from '../components/FormInputRow';
 import { useState } from 'react';
 import Header from '../components/PageHeader';
 
-const Register = () => {
+const Profile = () => {
   const [UserName, setUserName] = useState('');
   const [UserEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,10 +16,7 @@ const Register = () => {
     <main>
       <div className='mx-4'>
         <div className='bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24'>
-          <Header
-            headerTitle='Register'
-            Description='Create an account to post gig'
-          />
+          <Header headerTitle='Profile' Description='Edit Your Profile' />
           <form onSubmit={submitHandler}>
             <FormInputRow
               type='text'
@@ -71,4 +68,4 @@ const Register = () => {
     </main>
   );
 };
-export default Register;
+export default Profile;
