@@ -2,6 +2,7 @@ const JobListDat = [
   {
     id: 1,
     title: 'Senior Laravel Developer',
+    jobType: 'fulltime',
     company: 'Acme Corp',
     tags: [
       {
@@ -17,8 +18,10 @@ const JobListDat = [
         tag: 'Backend',
       },
     ],
+    email: 'company@gmail.com',
+    website: 'www.company.com',
     location: 'Boston MA',
-    image: 'images/acme.png',
+    image: '/images/acme.png',
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Eligendi non reprehenderit facilis architecto autem quam
                   necessitatibus, odit quod, repellendus voluptate cum.
@@ -27,6 +30,8 @@ const JobListDat = [
   {
     id: 2,
     title: 'Full-Stack Engineer',
+    jobType: 'fulltime',
+
     company: 'Stark Industries',
     tags: [
       {
@@ -42,8 +47,10 @@ const JobListDat = [
         tag: 'Backend',
       },
     ],
+    email: 'company@gmail.com',
+    website: 'www.company.com',
     location: ' Lawrence, MA',
-    image: 'images/stark.png',
+    image: '/images/stark.png',
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Eligendi non reprehenderit facilis architecto autem quam
                   necessitatibus, odit quod, repellendus voluptate cum.
@@ -52,6 +59,8 @@ const JobListDat = [
   {
     id: 3,
     title: 'Laravel Developer',
+    jobType: 'fulltime',
+
     company: ' Wayne Enterprises',
     tags: [
       {
@@ -67,8 +76,10 @@ const JobListDat = [
         tag: 'Laravel',
       },
     ],
+    email: 'company@gmail.com',
+    website: 'www.company.com',
     location: 'Newark, NJ',
-    image: 'images/wayne.png',
+    image: '/images/wayne.png',
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Eligendi non reprehenderit facilis architecto autem quam
                   necessitatibus, odit quod, repellendus voluptate cum.
@@ -77,6 +88,8 @@ const JobListDat = [
   {
     id: 4,
     title: 'Backend Laravel Dev',
+    jobType: 'fulltime',
+
     company: ' Skynet Systems',
     tags: [
       {
@@ -88,8 +101,10 @@ const JobListDat = [
         tag: 'Node js',
       },
     ],
+    email: 'company@gmail.com',
+    website: 'www.company.com',
     location: 'Daytona, FL',
-    image: 'images/skynet.png',
+    image: '/images/skynet.png',
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Eligendi non reprehenderit facilis architecto autem quam
                   necessitatibus, odit quod, repellendus voluptate cum.
@@ -98,6 +113,8 @@ const JobListDat = [
   {
     id: 5,
     title: 'Junior React Developer',
+    jobType: 'fulltime',
+
     company: ' Wayne Enterprises',
     tags: [
       {
@@ -113,8 +130,10 @@ const JobListDat = [
         tag: 'Java',
       },
     ],
+    email: 'company@gmail.com',
+    website: 'www.company.com',
     location: 'Boston M,A',
-    image: 'images/wonka.png',
+    image: '/images/wonka.png',
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Eligendi non reprehenderit facilis architecto autem quam
                   necessitatibus, odit quod, repellendus voluptate cum.

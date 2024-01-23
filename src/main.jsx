@@ -20,20 +20,24 @@ import CreateJob from './pages/CreateJob';
 import CreateCompanyProfile from './pages/Company.jsx';
 import EditCompanyProfile from './pages/EditCompany.jsx';
 import Profile from './pages/EditProfile.jsx';
+import LandingPage from './pages/LandingPage.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<App />}>
-      <Route index={true} path='/' element={<Home />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/job-detail/:itemId' element={<SingleJob />} />
-      <Route path='/manage' element={<ManageJobs />} />
-      <Route path='/edit-job' element={<EditJob />} />
-      <Route path='/create' element={<CreateJob />} />
-      <Route path='/company' element={<CreateCompanyProfile />} />
-      <Route path='/edit-company' element={<EditCompanyProfile />} />
-      <Route path='/profile' element={<Profile />} />
+    <Route>
+      <Route path='/' element={<LandingPage />} />
+      <Route path='/' element={<App />}>
+        <Route path='/home' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/job-detail/:itemId' element={<SingleJob />} />
+        <Route path='/manage' element={<ManageJobs />} />
+        <Route path='/edit-job/:itemId' element={<EditJob />} />
+        <Route path='/create' element={<CreateJob />} />
+        <Route path='/company' element={<CreateCompanyProfile />} />
+        <Route path='/edit-company' element={<EditCompanyProfile />} />
+        <Route path='/profile' element={<Profile />} />
+      </Route>
     </Route>
   )
 );

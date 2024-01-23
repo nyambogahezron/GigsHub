@@ -1,36 +1,48 @@
 import FormInputRow from '../components/FormInputRow';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../components/PageHeader';
+import CustomButton from '../components/CustomButton';
+import { useParams } from 'react-router-dom';
+import JobListData from '../components/data';
 
 const EditJob = () => {
-  const [Company, setCompany] = useState('');
+  useEffect(() => {
+    document.title = 'GIGHUB - Edit Gig';
+    return () => {
+      document.title = 'GIGHUB - Find | Post Jobs';
+    };
+  }, []);
   const [JobTitle, setJobTitle] = useState('');
-  const [Location, setLocation] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Website, setWebsite] = useState('');
+  const [JobType, setJobType] = useState('');
   const [Tags, setTags] = useState('');
-  const [Logo, setLogo] = useState('');
   const [Description, setDescription] = useState('');
+  const { itemId } = useParams();
+  const [currentItem, setCurrentItem] = useState([]);
+
+  useEffect(() => {
+    const filtered = JobListData.filter(
+      (item) => item.id.toString() === itemId
+    );
+    setCurrentItem(filtered[0]);
+
+    const { title, type, tags, description } = currentItem;
+    setTags(tags);
+    setJobTitle(title);
+    setJobType(type);
+    setDescription(description);
+  }, [itemId]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(Company, JobTitle, Location, Email, Website, Tags, Description);
+    console.log(JobType, JobTitle, Location, Tags, Description);
   };
   return (
     <main>
       <div className='mx-4'>
         <div className='bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24'>
-          <Header headerTitle='Edit a Gig' />
+          <Header headerTitle='Edit Gig' />
 
           <form onSubmit={submitHandler}>
-            <FormInputRow
-              type='text'
-              name='company'
-              value={Company}
-              handleChange={(e) => setCompany(e.target.value)}
-              placeHolder=' Enter Company Name'
-              labelText='Company Name'
-            />
             <FormInputRow
               type='text'
               name='JobTitle'
@@ -41,26 +53,13 @@ const EditJob = () => {
             />
             <FormInputRow
               type='text'
-              name='location'
-              value={Location}
-              handleChange={(e) => setLocation(e.target.value)}
-              placeHolder='Example: Remote, Boston MA, etc'
-              labelText='Location'
+              name='JobType'
+              value={JobType}
+              handleChange={(e) => setJobType(e.target.value)}
+              placeHolder=' Example: Remote, fulltime'
+              labelText='Job Type'
             />
-            <FormInputRow
-              type='text'
-              name='email'
-              value={Email}
-              handleChange={(e) => setEmail(e.target.value)}
-              labelText='Contact Email'
-            />
-            <FormInputRow
-              type='text'
-              name='website'
-              value={Website}
-              handleChange={(e) => setWebsite(e.target.value)}
-              labelText='Website/Application URL'
-            />
+
             <FormInputRow
               type='text'
               name='tags'
@@ -68,12 +67,6 @@ const EditJob = () => {
               handleChange={(e) => setTags(e.target.value)}
               labelText='Tags (Comma Separated)'
               placeHolder='Example: Laravel, Backend, Postgres, etc'
-            />
-            <FormInputRow
-              type='file'
-              name='logo'
-              value={Logo}
-              handleChange={(e) => setLogo(e.target.value)}
             />
 
             <div className='mb-6'>
@@ -91,17 +84,7 @@ const EditJob = () => {
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
             </div>
-
-            <div className='mb-6'>
-              <button className='bg-primary-color text-white rounded py-2 px-4 hover:bg-black'>
-                Edit Gig
-              </button>
-
-              <a href='/' className='text-black ml-4'>
-                {' '}
-                Back{' '}
-              </a>
-            </div>
+            <CustomButton btnText='Edit Gig' />
           </form>
         </div>
       </div>

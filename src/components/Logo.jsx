@@ -3,7 +3,7 @@ const Logo = () => {
   return (
     <>
       {' '}
-      <Link to='/'>
+      <Link to='/home'>
         <div className='logo transition-all w-24 hover:scale-[1.1]'>
           <span className='bg-primary-color  font-bold text-lg text-white p-2'>
             GIGS

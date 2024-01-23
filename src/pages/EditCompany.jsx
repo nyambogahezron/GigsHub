@@ -1,8 +1,15 @@
 import FormInputRow from '../components/FormInputRow';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../components/PageHeader';
+import CustomButton from '../components/CustomButton';
 
 const EditCompanyProfile = () => {
+  useEffect(() => {
+    document.title = 'GIGHUB - Edit Company Profile';
+    return () => {
+      document.title = 'GIGHUB - Find | Post Jobs';
+    };
+  }, []);
   const [Company, setCompany] = useState('');
   const [Location, setLocation] = useState('');
   const [Email, setEmail] = useState('');
@@ -58,15 +65,7 @@ const EditCompanyProfile = () => {
               handleChange={(e) => setLogo(e.target.value)}
             />
 
-            <div className='mb-6'>
-              <button className='bg-primary-color text-white rounded py-2 px-4 hover:bg-black'>
-                Create Company
-              </button>
-              <a href='/' className='text-black ml-4'>
-                {' '}
-                Back{' '}
-              </a>
-            </div>
+            <CustomButton btnText='Edit Company' />
           </form>
         </div>
       </div>

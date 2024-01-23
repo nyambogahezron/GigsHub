@@ -1,10 +1,15 @@
-import Hero from '../components/Hero';
 import SearchBox from '../components/SearchBox';
 import JobList from '../components/jobList';
+import { useEffect } from 'react';
 const Home = () => {
+  useEffect(() => {
+    document.title = 'GIGHUB -  Home';
+    return () => {
+      document.title = 'GIGHUB - Find | Post Jobs';
+    };
+  }, []);
   return (
     <main>
-      <Hero />
       <SearchBox />
       <div className='job-container'>
         <JobList />

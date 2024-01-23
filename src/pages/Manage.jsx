@@ -1,8 +1,17 @@
 import SearchBox from '../components/SearchBox';
 import Header from '../components/PageHeader';
 import JobListData from '../components/data';
+import { FaTrash, FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const ManageJobs = () => {
+  useEffect(() => {
+    document.title = 'GIGHUB -  Manage Gigs';
+    return () => {
+      document.title = 'GIGHUB - Find | Post Jobs';
+    };
+  }, []);
   return (
     <main>
       <SearchBox />
@@ -20,18 +29,23 @@ const ManageJobs = () => {
                       <a href='show.html'>{title}</a>
                     </td>
                     <td className='px-4 py-8 border-t border-b border-gray-300 text-lg'>
-                      <a
-                        href='edit.html'
-                        className='text-blue-400 px-6 py-2 rounded-xl'
+                      <Link
+                        to={`/edit-job/${id}`}
+                        className='flex align-baseline items-baseline text-blue-400 px-6 py-2 rounded-xl'
                       >
-                        <i className='fa-solid fa-pen-to-square'></i> Edit
-                      </a>
+                        <span>
+                          <FaEdit />
+                        </span>{' '}
+                        <span> Edit</span>
+                      </Link>
                     </td>
                     <td className='px-4 py-8 border-t border-b border-gray-300 text-lg'>
                       <form action=''>
-                        <button className='text-red-600'>
-                          <i className='fa-solid fa-trash-can'></i>
-                          Delete
+                        <button className='flex align-baseline items-baseline text-red-600'>
+                          <span className='text-sm'>
+                            <FaTrash />
+                          </span>
+                          <span>Delete</span>
                         </button>
                       </form>
                     </td>

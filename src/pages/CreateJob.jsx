@@ -1,8 +1,15 @@
 import FormInputRow from '../components/FormInputRow';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../components/PageHeader';
+import CustomButton from '../components/CustomButton';
 
 const CreateJob = () => {
+  useEffect(() => {
+    document.title = 'GIGHUB - Create Gig';
+    return () => {
+      document.title = 'GIGHUB - Find | Post Jobs';
+    };
+  }, []);
   const [JobTitle, setJobTitle] = useState('');
   const [JobType, setJobType] = useState('');
   const [Tags, setTags] = useState('');
@@ -64,16 +71,7 @@ const CreateJob = () => {
               ></textarea>
             </div>
 
-            <div className='mb-6'>
-              <button className='bg-primary-color text-white rounded py-2 px-4 hover:bg-black'>
-                Create Gig
-              </button>
-
-              <a href='/' className='text-black ml-4'>
-                {' '}
-                Back{' '}
-              </a>
-            </div>
+            <CustomButton btnText='Create Gig' />
           </form>
         </div>
       </div>

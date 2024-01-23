@@ -1,8 +1,16 @@
 import FormInputRow from '../components/FormInputRow';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../components/PageHeader';
+import CustomButton from '../components/CustomButton';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+  useEffect(() => {
+    document.title = 'GIGHUB -  Register';
+    return () => {
+      document.title = 'GIGHUB - Find | Post Jobs';
+    };
+  }, []);
   const [UserName, setUserName] = useState('');
   const [UserEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,18 +59,14 @@ const Register = () => {
               placeHolder='Confirm Password'
             />
 
-            <div className='mb-6'>
-              <button className='bg-primary-color text-white rounded py-2 px-4 hover:bg-black'>
-                Sign Up
-              </button>
-            </div>
+            <CustomButton btnText='Register' />
 
             <div className='mt-8'>
               <p>
                 Already have an account?
-                <a href='login.html' className='text-laravel'>
+                <Link to='/login' className='text-primary-color'>
                   Login
-                </a>
+                </Link>
               </p>
             </div>
           </form>

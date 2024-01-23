@@ -2,8 +2,18 @@ import { useState, useEffect } from 'react';
 import SearchBox from '../components/SearchBox';
 import JobListData from '../components/data';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 const SingleJob = () => {
+  // page title
+  useEffect(() => {
+    document.title = 'GIGHUB - Job Details';
+    return () => {
+      document.title = 'GIGHUB - Find | Post Jobs';
+    };
+  }, []);
+
   const { itemId } = useParams();
   const [currentItem, setCurrentItem] = useState([]);
   useEffect(() => {
@@ -15,16 +25,22 @@ const SingleJob = () => {
   return (
     <main>
       <SearchBox />
-      <a href='index.html' className='inline-block text-black ml-4 mb-4'>
-        <i className='fa-solid fa-arrow-left'></i> Back
-      </a>
+      <Link
+        to='/home'
+        className='flex baseline items-center justify-start transition-all  hover:text-blue-500 text-black bg-grey-500 ml-4 mb-4 '
+      >
+        <span>
+          <FaArrowLeft />
+        </span>
+        <span> Back</span>
+      </Link>
 
       <div className='mx-4'>
         <div className='bg-gray-50 border border-gray-200 p-10 rounded'>
           <div className='flex flex-col items-center justify-center text-center'>
             <img
               className='w-48 mr-6 mb-6'
-              src='images/acme.png'
+              src={currentItem.image}
               alt={currentItem.company}
             />
 
@@ -50,16 +66,21 @@ const SingleJob = () => {
               <h3 className='text-3xl font-bold mb-4'>Job Description</h3>
               <div className='text-lg space-y-6'>
                 <p>{currentItem.description}</p>
+                <p className='mt-2 mb-1'>{currentItem.jobType}</p>
 
                 <a
-                  href='mailto:test@test.com'
+                  href={currentItem.email}
+                  target='_blank'
+                  rel='noopener noreferrer'
                   className='block bg-primary-color text-white mt-6 py-2 rounded-xl hover:opacity-80'
                 >
                   <i className='fa-solid fa-envelope'></i> Contact Employer
                 </a>
 
                 <a
-                  href='https://test.com'
+                  href={currentItem.website}
+                  target='_blank'
+                  rel='noopener noreferrer'
                   className='block bg-black text-white py-2 rounded-xl hover:opacity-80'
                 >
                   <i className='fa-solid fa-globe'></i> Visit Website

@@ -5,7 +5,7 @@
   padding: 0 10px;
 }
 .hero {
-  background-image: url(../public/images/laravel-logo.png);
+  background-image: url(/images/laravel-logo.png);
 }
 
 @media (max-width: 1330px) {
