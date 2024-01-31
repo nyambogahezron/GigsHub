@@ -1,13 +1,13 @@
-import { ToastContainer } from 'react-toastify';
-import { Outlet } from 'react-router-dom';
-import Layout from './components/Layout';
+import { Outlet } from "react-router-dom";
+import Layout from "./components/Layout";
 
 const App = () => {
   return (
-    <Layout>
-      <ToastContainer />
-      <Outlet />
-    </Layout>
+    <>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </>
   );
 };
 
