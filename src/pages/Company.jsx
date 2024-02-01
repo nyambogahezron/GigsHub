@@ -1,7 +1,12 @@
 import FormInputRow from '../components/FormInputRow';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import Header from '../components/PageHeader';
 import CustomButton from '../components/CustomButton';
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useCreateCompanyMutation } from "../slices/companyApiSlice";
+import { setCompanyInfo } from "../slices/companySlice";
 
 const CreateCompanyProfile = () => {
   useEffect(() => {
@@ -14,19 +19,38 @@ const CreateCompanyProfile = () => {
   const [Company, setCompany] = useState('');
   const [Location, setLocation] = useState('');
   const [Email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [Website, setWebsite] = useState('');
-  const [Logo, setLogo] = useState('');
+  // const [Logo, setLogo] = useState('');
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [createCompany, { isLoading }] =  useCreateCompanyMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+ 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(Company, Location, Email, Website);
+    try {
+      const res = await createCompany({ name: Company, email: Email, phoneNumber, website: Website, location: Location }).unwrap();
+
+      await dispatch(setCompanyInfo({ ...res.company }));
+      console.log(res)
+      toast.info(res.msg);
+      // navigate("/home");
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.data?.msg || err.error);
+    }
   };
   return (
     <main>
       <div className='mx-4'>
         <div className='bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24'>
           <Header
-            headerTitle='Create a Gig'
+            headerTitle='Create Company'
             Description='Post a gig to find a developer'
           />
 
@@ -54,6 +78,13 @@ const CreateCompanyProfile = () => {
               handleChange={(e) => setEmail(e.target.value)}
               labelText='Contact Email'
             />
+              <FormInputRow
+              type='number'
+              name='phoneNumber'
+              value={phoneNumber}
+              handleChange={(e) => setPhoneNumber(e.target.value)}
+              labelText='Phone Number'
+            />
             <FormInputRow
               type='text'
               name='website'
@@ -65,8 +96,8 @@ const CreateCompanyProfile = () => {
             <FormInputRow
               type='file'
               name='logo'
-              value={Logo}
-              handleChange={(e) => setLogo(e.target.value)}
+           
+              
             />
 
             <CustomButton btnText='Create Company' />
