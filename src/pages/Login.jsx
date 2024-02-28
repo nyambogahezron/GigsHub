@@ -1,23 +1,22 @@
-import FormInputRow from "../components/FormInputRow";
-import { useState, useEffect } from "react";
-import Header from "../components/PageHeader";
+import FormInputRow from '../components/FormInputRow';
+import { useState, useEffect } from 'react';
+import Header from '../components/PageHeader';
 import { toast } from 'react-toastify';
-import CustomButton from "../components/CustomButton";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useLoginMutation } from "../slices/userApiSlice";
-import { setCredentials } from "../slices/authSlice";
+import CustomButton from '../components/CustomButton';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLoginMutation } from '../slices/userApiSlice';
+import { setCredentials } from '../slices/authSlice';
 
 const Login = () => {
   useEffect(() => {
-    document.title = "GIGHUB -  Login";
+    document.title = 'GIGSHUB -  Login';
     return () => {
-      document.title = "GIGHUB - Find | Post Jobs";
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
-  const [UserName, setUserName] = useState("");
-  const [UserEmail, setUserEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [UserEmail, setUserEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -28,7 +27,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/home");
+      navigate('/home');
     }
   }, [navigate, userInfo]);
 
@@ -38,14 +37,14 @@ const Login = () => {
       const res = await login({ email: UserEmail, password }).unwrap();
       dispatch(setCredentials({ ...res.user }));
       toast.info(res.msg);
-      navigate("/home");
+      navigate('/home');
     } catch (err) {
       console.log(err);
       if (
         err.data.msg ==
-        "Please provide Name,Please provide email,Please provide password"
+        'Please provide Name,Please provide email,Please provide password'
       ) {
-        toast.error("Please enter all fields");
+        toast.error('Please enter all fields');
       } else {
         toast.error(err?.data?.msg || err.error);
       }
@@ -54,31 +53,31 @@ const Login = () => {
 
   return (
     <main>
-      <div className="mx-4">
-        <div className="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
-          <Header headerTitle="Log In" Description="Log in to post gigs" />
+      <div className='mx-4'>
+        <div className='bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24'>
+          <Header headerTitle='Log In' Description='Log in to post gigs' />
 
           <form onSubmit={submitHandler}>
             <FormInputRow
-              type="email"
-              name="email"
+              type='email'
+              name='email'
               value={UserEmail}
               handleChange={(e) => setUserEmail(e.target.value)}
-              placeHolder="Enter Email"
+              placeHolder='Enter Email'
             />
             <FormInputRow
-              type="password"
-              name="password"
+              type='password'
+              name='password'
               value={password}
               handleChange={(e) => setPassword(e.target.value)}
-              placeHolder="Enter Password"
+              placeHolder='Enter Password'
             />
-            <CustomButton btnText="Login" />
+            <CustomButton btnText='Login' />
 
-            <div className="mt-8">
+            <div className='mt-8'>
               <p>
                 Dont have an account?
-                <Link to="/register" className="text-primary-color">
+                <Link to='/register' className='text-primary-color'>
                   Register
                 </Link>
               </p>

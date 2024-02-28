@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 const LandingPage = () => {
   useEffect(() => {
-    document.title = 'GIGHUB -  Landing Page';
+    document.title = 'GIGSHUB -  Landing Page';
     return () => {
-      document.title = 'GIGHUB - Find | Post Jobs';
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
   return (
@@ -45,7 +45,7 @@ const LandingPage = () => {
         </div>
         <div>
           <Link
-            to='/login'
+            to='/login?u=e'
             className='inline-block border-2 border-green-700 text-black py-2 px-4 rounded-full w-[300px] bg-white transition-all font-medium  uppercase mt-2 hover:text-black hover:border-primary-color  hover:bg-green-200'
           >
             Continue as employer

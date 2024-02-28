@@ -3,15 +3,15 @@ import JobList from '../components/jobList';
 import { useEffect } from 'react';
 const Home = () => {
   useEffect(() => {
-    document.title = 'GIGHUB -  Home';
+    document.title = 'GIGSHUB -  Home';
     return () => {
-      document.title = 'GIGHUB - Find | Post Jobs';
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
   return (
     <main>
       <SearchBox />
-      <div className='job-container'>
+      <div>
         <JobList />
       </div>
     </main>

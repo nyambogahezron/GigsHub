@@ -4,7 +4,7 @@ const PageTitle = ({ title }) => {
   useEffect(() => {
     const PageTitle = (document.title = { title });
     return () => {
-      document.title = PageTitle || 'GIGHUB - Find | Post Jobs';
+      document.title = PageTitle || 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
 };

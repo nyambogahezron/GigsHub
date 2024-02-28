@@ -5,9 +5,9 @@ import CustomButton from '../components/CustomButton';
 
 const CreateJob = () => {
   useEffect(() => {
-    document.title = 'GIGHUB - Create Gig';
+    document.title = 'GIGSHUB - Create Gig';
     return () => {
-      document.title = 'GIGHUB - Find | Post Jobs';
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
   const [JobTitle, setJobTitle] = useState('');

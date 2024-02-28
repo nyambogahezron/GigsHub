@@ -8,9 +8,9 @@ import { FaArrowLeft } from 'react-icons/fa6';
 const SingleJob = () => {
   // page title
   useEffect(() => {
-    document.title = 'GIGHUB - Job Details';
+    document.title = 'GIGSHUB - Job Details';
     return () => {
-      document.title = 'GIGHUB - Find | Post Jobs';
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
 
@@ -18,7 +18,7 @@ const SingleJob = () => {
   const [currentItem, setCurrentItem] = useState([]);
   useEffect(() => {
     const filtered = JobListData.filter(
-      (item) => item.id.toString() === itemId
+      (item) => item._id.toString() === itemId
     );
     setCurrentItem(filtered[0]);
   }, [itemId]);

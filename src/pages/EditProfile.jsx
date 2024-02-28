@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 
 const Profile = () => {
   useEffect(() => {
-    document.title = 'GIGHUB -  Profile';
+    document.title = 'GIGSHUB -  Profile';
     return () => {
-      document.title = 'GIGHUB - Find | Post Jobs';
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
   const [UserName, setUserName] = useState('');

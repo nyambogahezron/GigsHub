@@ -7,9 +7,9 @@ import JobListData from '../components/data';
 
 const EditJob = () => {
   useEffect(() => {
-    document.title = 'GIGHUB - Edit Gig';
+    document.title = 'GIGSHUB - Edit Gig';
     return () => {
-      document.title = 'GIGHUB - Find | Post Jobs';
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
   const [JobTitle, setJobTitle] = useState('');

@@ -3,16 +3,16 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Header from '../components/PageHeader';
 import CustomButton from '../components/CustomButton';
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useCreateCompanyMutation } from "../slices/companyApiSlice";
-import { setCompanyInfo } from "../slices/companySlice";
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCreateCompanyMutation } from '../slices/companyApiSlice';
+import { setCompanyInfo } from '../slices/companySlice';
 
 const CreateCompanyProfile = () => {
   useEffect(() => {
-    document.title = 'GIGHUB - Create Company Profile';
+    document.title = 'GIGSHUB - Create Company Profile';
     return () => {
-      document.title = 'GIGHUB - Find | Post Jobs';
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
 
@@ -26,18 +26,23 @@ const CreateCompanyProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [createCompany, { isLoading }] =  useCreateCompanyMutation();
+  const [createCompany, { isLoading }] = useCreateCompanyMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
 
- 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await createCompany({ name: Company, email: Email, phoneNumber, website: Website, location: Location }).unwrap();
+      const res = await createCompany({
+        name: Company,
+        email: Email,
+        phoneNumber,
+        website: Website,
+        location: Location,
+      }).unwrap();
 
       await dispatch(setCompanyInfo({ ...res.company }));
-      console.log(res)
+      console.log(res);
       toast.info(res.msg);
       // navigate("/home");
     } catch (err) {
@@ -78,7 +83,7 @@ const CreateCompanyProfile = () => {
               handleChange={(e) => setEmail(e.target.value)}
               labelText='Contact Email'
             />
-              <FormInputRow
+            <FormInputRow
               type='number'
               name='phoneNumber'
               value={phoneNumber}
@@ -93,12 +98,7 @@ const CreateCompanyProfile = () => {
               labelText='Website/Application URL'
             />
 
-            <FormInputRow
-              type='file'
-              name='logo'
-           
-              
-            />
+            <FormInputRow type='file' name='logo' />
 
             <CustomButton btnText='Create Company' />
           </form>

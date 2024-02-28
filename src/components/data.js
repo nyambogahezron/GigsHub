@@ -1,23 +1,10 @@
 const JobListDat = [
   {
-    id: 1,
+    _id: 1,
     title: 'Senior Laravel Developer',
     jobType: 'fulltime',
     company: 'Acme Corp',
-    tags: [
-      {
-        id: 1,
-        tag: 'laravel',
-      },
-      {
-        id: 2,
-        tag: 'API',
-      },
-      {
-        id: 3,
-        tag: 'Backend',
-      },
-    ],
+    tags: 'laravel,API,Backend',
     email: 'company@gmail.com',
     website: 'www.company.com',
     location: 'Boston MA',
@@ -28,25 +15,11 @@ const JobListDat = [
                   Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
   {
-    id: 2,
+    _id: 2,
     title: 'Full-Stack Engineer',
     jobType: 'fulltime',
-
     company: 'Stark Industries',
-    tags: [
-      {
-        id: 1,
-        tag: 'laravel',
-      },
-      {
-        id: 2,
-        tag: 'API',
-      },
-      {
-        id: 3,
-        tag: 'Backend',
-      },
-    ],
+    tags: 'laravel,API,Backend',
     email: 'company@gmail.com',
     website: 'www.company.com',
     location: ' Lawrence, MA',
@@ -57,25 +30,11 @@ const JobListDat = [
                   Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
   {
-    id: 3,
+    _id: 3,
     title: 'Laravel Developer',
     jobType: 'fulltime',
-
     company: ' Wayne Enterprises',
-    tags: [
-      {
-        id: 1,
-        tag: 'PHP',
-      },
-      {
-        id: 2,
-        tag: 'SQL',
-      },
-      {
-        id: 3,
-        tag: 'Laravel',
-      },
-    ],
+    tags: 'PHP,SQL,Laravel',
     email: 'company@gmail.com',
     website: 'www.company.com',
     location: 'Newark, NJ',
@@ -86,21 +45,11 @@ const JobListDat = [
                   Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
   {
-    id: 4,
+    _id: 4,
     title: 'Backend Laravel Dev',
     jobType: 'fulltime',
-
     company: ' Skynet Systems',
-    tags: [
-      {
-        id: 1,
-        tag: 'laravel',
-      },
-      {
-        id: 2,
-        tag: 'Node js',
-      },
-    ],
+    tags: 'laravel,Node JS',
     email: 'company@gmail.com',
     website: 'www.company.com',
     location: 'Daytona, FL',
@@ -111,25 +60,11 @@ const JobListDat = [
                   Necessitatibus a id tenetur. Error numquam at modi quaerat`,
   },
   {
-    id: 5,
+    _id: 5,
     title: 'Junior React Developer',
     jobType: 'fulltime',
-
     company: ' Wayne Enterprises',
-    tags: [
-      {
-        id: 1,
-        tag: 'CSS',
-      },
-      {
-        id: 2,
-        tag: 'Bootstrap',
-      },
-      {
-        id: 3,
-        tag: 'Java',
-      },
-    ],
+    tags: 'CSS,Bootstrap,Java',
     email: 'company@gmail.com',
     website: 'www.company.com',
     location: 'Boston M,A',

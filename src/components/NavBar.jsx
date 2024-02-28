@@ -12,6 +12,7 @@ import { logout } from '../slices/authSlice';
 
 const NavBar = () => {
   const { userInfo } = useSelector((state) => state.auth);
+  const { companyInfo } = useSelector((state) => state.company);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = userInfo?.userId;
@@ -68,6 +69,7 @@ const NavBar = () => {
             <span>Profile</span>
           </Link>
         </li>
+        { companyInfo ? (
         <li>
           <Link
             to="/manage"
@@ -75,7 +77,7 @@ const NavBar = () => {
           >
             <span>Dashboard</span>
           </Link>
-        </li>
+        </li> ) : ( "" )}
         <li>
           <Link
             to="#" onClick={logoutHandler}

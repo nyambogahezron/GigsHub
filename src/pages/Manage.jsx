@@ -7,9 +7,9 @@ import { useEffect } from 'react';
 
 const ManageJobs = () => {
   useEffect(() => {
-    document.title = 'GIGHUB -  Manage Gigs';
+    document.title = 'GIGSHUB -  Manage Gigs';
     return () => {
-      document.title = 'GIGHUB - Find | Post Jobs';
+      document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
   return (
