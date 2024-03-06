@@ -2,6 +2,7 @@ import FormInputRow from '../components/FormInputRow';
 import { useState, useEffect } from 'react';
 import Header from '../components/PageHeader';
 import CustomButton from '../components/CustomButton';
+import ImagesUpload from '../components/ImagesUpload';
 
 const CreateJob = () => {
   useEffect(() => {
@@ -75,6 +76,7 @@ const CreateJob = () => {
           </form>
         </div>
       </div>
+      <ImagesUpload />
     </main>
   );
 };

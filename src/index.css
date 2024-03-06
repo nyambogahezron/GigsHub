@@ -11,7 +11,14 @@
 .hero {
   background-image: url(/images/laravel-logo.png);
 }
-
+@keyframes reverse-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
 @media (max-width: 1330px) {
   .job-container {
     grid-template-columns: repeat(2, 1fr);
