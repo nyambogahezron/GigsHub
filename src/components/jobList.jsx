@@ -35,7 +35,7 @@ const JobList = () => {
     return <div>No gigs found with {paramsString}</div>;
   }
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading Gigs...</div>}>
       {isLoading ? (
         <div>Loading...</div>
       ) : (

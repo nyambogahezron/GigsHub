@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-const ImagesUpload = () => {
+const ImagesUpload = ({setImage}) => {
    const [uploadedFiles, setUploadedFiles] = useState([]);
   const onDrop = useCallback((acceptedFiles) => {
-    console.log(acceptedFiles);
+    setImage(acceptedFiles);
     setUploadedFiles(acceptedFiles)
 
   }, []);
@@ -20,22 +20,16 @@ const ImagesUpload = () => {
 
   return (
      <div>
-      <h1>Image Uploader</h1>
+      <h1 className='text-md font-semibold pb-2'>Image Uploader</h1>
       <div {...getRootProps()} style={dropzoneStyles}>
         <input {...getInputProps()} />
         {
           isDragActive ?
-            <p>Drop the files here...</p> :
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p className='text-md font-semibold pb-2'>Drop the files here...</p> :
+            <p className='text-md font-semibold'>Click to select files</p>
         }
       </div>
-      <h2>Uploaded Images:</h2>
-      <div>
-        {uploadedFiles.map((file, index) => (
-          <img key={index} src={file} alt={`Uploaded ${index}`} style={{ maxWidth: '200px', margin: '5px' }} />
-        ))}
-      </div>
-    </div>
+     </div>
   );
 };
 

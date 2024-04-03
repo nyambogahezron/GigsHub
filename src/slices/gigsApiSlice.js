@@ -1,5 +1,5 @@
 import { apiSlice } from './apiSlice';
-const BASE_URL = 'http://localhost:5000/api/v1/gigs';
+const BASE_URL = '/api/v1/gigs';
 
 export const gigsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -12,7 +12,14 @@ export const gigsApiSlice = apiSlice.injectEndpoints({
         return { url: url.toString() };
       },
     }),
+    createGig: builder.mutation({
+      query: (data) => ({
+        url: `${BASE_URL}/create`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetGigsQuery } = gigsApiSlice;
+export const { useGetGigsQuery, useCreateGigMutation } = gigsApiSlice;
