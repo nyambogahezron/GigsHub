@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Layout = ({ children }) => {
   return (
-    <section className="mb-0">
+    <section className="mb-0 dark">
       <ToastContainer />
       <NavBar />
       {children}

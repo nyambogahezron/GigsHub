@@ -1,27 +1,31 @@
-import FormInputRow from '../components/FormInputRow';
-import { useState, useEffect } from 'react';
-import Header from '../components/PageHeader';
-import CustomButton from '../components/CustomButton';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import { useRegisterMutation } from '../slices/userApiSlice';
-import { setCredentials } from '../slices/authSlice';
+import FormInputRow from "../components/FormInputRow";
+import { useState, useEffect } from "react";
+import Header from "../components/PageHeader";
+import CustomButton from "../components/CustomButton";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { useRegisterMutation } from "../slices/userApiSlice";
+import { setCredentials } from "../slices/authSlice";
 
 const Register = () => {
+  // set page title
   useEffect(() => {
-    document.title = 'GIGSHUB -  Register';
+    document.title = "GIGS-HUB -  Register";
     return () => {
-      document.title = 'GIGSHUB - Find | Post Jobs';
+      document.title = "GIGS-HUB - Find | Register";
     };
   }, []);
-  const [UserName, setUserName] = useState('');
-  const [UserEmail, setUserEmail] = useState('');
-  const [role, setRoleEmail] = useState('Job Seeker');
-  const [password, setPassword] = useState('');
-  const [ConfirmPassword, setConfirmPassword] = useState('');
 
+  // get form data
+  const [UserName, setUserName] = useState("");
+  const [UserEmail, setUserEmail] = useState("");
+  const [role, setRole] = useState("Job Seeker");
+  const [image, setImage] = useState(null);
+  const [password, setPassword] = useState("");
+  const [ConfirmPassword, setConfirmPassword] = useState("");
+
+  // redux
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,31 +34,38 @@ const Register = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/home');
+      navigate("/home");
     }
   }, [navigate, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    if (!UserName || !UserEmail || !password || !ConfirmPassword) {
+      toast.error("Please enter all fields");
+      return;
+    }
+
     if (password !== ConfirmPassword) {
-      toast.error('Passwords do not match');
+      toast.error("Passwords do not match");
     } else {
       try {
-        const res = await register({
-          name: UserName,
-          email: UserEmail,
-          password,
-          role,
-        }).unwrap();
-        dispatch(setCredentials({ ...res.user }));
+        const formData = new FormData();
+        formData.append("name", UserName);
+        formData.append("email", UserEmail);
+        formData.append("profileImage", image);
+        formData.append("password", password);
+        formData.append("role", role);
+
+        const res = await register(formData).unwrap();
         console.log(res);
+        dispatch(setCredentials({ ...res.user }));
         toast.info(res.msg);
-        navigate('/home');
+        navigate("/home");
       } catch (err) {
         console.log(err);
-        if (err.data.msg == 'Please Provide name,Please Provide Email') {
-          toast.error('Please enter all fields');
+        if (err.data.msg == "Please Provide name,Please Provide Email") {
+          toast.error("Please enter all fields");
         } else {
           toast.error(err?.data?.msg || err.error);
         }
@@ -84,42 +95,43 @@ const Register = () => {
               handleChange={(e) => setUserEmail(e.target.value)}
               placeHolder='Enter Email'
             />
-
-            <div className='max-w-md mx-auto bg-white p-6 rounded-md shadow-md mb-5'>
-              <label className='block text-gray-700 font-bold mb-2'>
+            {/* role select  */}
+            <div className='max-w-md mx-auto py-4 rounded-md mb-2 '>
+              <label className='block text-gray-600 font-bold mb-2'>
                 Choose Your Role:
               </label>
-              <div className='flex items-center mb-4'>
-                {/* Option 1: */}
+              <select
+                className='block w-full mt-1'
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <option value='Job Seeker'>Job Seeker</option>
+                <option value='Employer'>Employer</option>
+              </select>
+            </div>
+            {/* image upload  */}
+            <div className=''>
+              <label className='block text-gray-700 font-bold mb-3'>
+                {role === "Job Seeker"
+                  ? "Upload Profile Picture"
+                  : "Upload Logo"}
+              </label>
+              <div className='max-w-md mx-auto bg-white py-6 px-2 rounded-md shadow-md mb-5'>
                 <input
-                  type='radio'
-                  id='jobSeeker'
-                  name='roles'
-                  defaultValue='Job Seeker'
-                  checked
-                  className='mr-2'
-                  onChange={(e) => setRoleEmail(e.target.value)}
+                  name='profileImage'
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) => setImage(e.target.files[0])}
                 />
-                <label htmlFor='jobSeeker' className='text-gray-700'>
-                  Job Seeker
-                </label>
-              </div>
-              <div className='flex items-center'>
-                {/* Option 2: */}
-                <input
-                  type='radio'
-                  id='option2'
-                  name='roles'
-                  defaultValue='Employer'
-                  className='mr-2'
-                  onChange={(e) => setRoleEmail(e.target.value)}
-                />
-                <label htmlFor='option2' className='text-gray-700'>
-                  Employeer
-                </label>
+                {/* show selected image */}
+                {image instanceof File && (
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt='preview'
+                    className='mt-2'
+                  />
+                )}
               </div>
             </div>
-
             <FormInputRow
               type='password'
               name='password'
