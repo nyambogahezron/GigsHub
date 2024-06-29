@@ -11,6 +11,25 @@
 .hero {
   background-image: url(/images/laravel-logo.png);
 }
+
+.drop-down {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: all 0.5s;
+  transform: translate(0, 10px);
+}
+.profile-img {
+  cursor: pointer;
+}
+.profile-img:hover .drop-down {
+  display: block;
+  transform: translate(0);
+}
+
 @keyframes reverse-spin {
   from {
     transform: rotate(360deg);

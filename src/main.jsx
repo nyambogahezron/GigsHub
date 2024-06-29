@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import store from './store';
-import { Provider } from 'react-redux'; 
+import { Provider } from 'react-redux';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -31,7 +31,7 @@ const router = createBrowserRouter(
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/job-detail/:itemId' element={<SingleJob />} />
+        <Route path='/job-detail/:id' element={<SingleJob />} />
         <Route path='/manage' element={<ManageJobs />} />
         <Route path='/edit-job/:itemId' element={<EditJob />} />
         <Route path='/create' element={<CreateJob />} />
@@ -45,8 +45,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   </Provider>
 );

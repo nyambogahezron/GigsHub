@@ -1,38 +1,39 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import JobListData from './data';
 import { useState, useEffect, Suspense } from 'react';
-import { useGetGigsQuery } from '../slices/gigsApiSlice';
 
 const JobList = () => {
-  const [queryParamsList, setQueryParamsList] = useState({});
+  const [gigsListData, setGigsListData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
   const page_location = useLocation();
 
-  const {
-    data: response = JobListData,
-    error,
-    isLoading,
-  } = useGetGigsQuery(queryParamsList);
-  const gigsListData = response?.gigs;
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const params = {};
-
-    for (const [key, value] of queryParams.entries()) {
-      params[key] = value;
+  const getGigs = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch('http://localhost:5000/api/v1/gigs');
+      setIsLoading(false);
+      const data = await res.json();
+      // console.log(data.gigs);
+      setGigsListData(data.gigs);
+    } catch (error) {
+      setIsLoading(false);
+      setIsError(true);
+      console.error('Error fetching gigs data:', error);
+    } finally {
+      setIsLoading(false);
     }
-    setQueryParamsList(params);
+  };
+  useEffect(() => {
+    getGigs();
   }, []);
 
-  if (error) {
-    console.error('Error fetching gigs data:', error);
+  if (isError) {
+    console.error('Error fetching gigs data:');
     return <div>Something went wrong...</div>;
   }
   if (gigsListData?.length === 0) {
-    const paramsString = Object.entries(queryParamsList)
-      .map(([key, value]) => `${key}=${value}`)
-      .join(' & ');
-    return <div>No gigs found with {paramsString}</div>;
+    return <div>No gigs found with</div>;
   }
   return (
     <Suspense fallback={<div>Loading Gigs...</div>}>

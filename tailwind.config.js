@@ -8,10 +8,10 @@ export default {
         'primary-color': '#ef3b2d',
       },
       screens: {
-        sm: { max: '630px' },
-        md: { max: '770px' },
-        lg: { max: '1023px' },
-        xl: { max: '1279px' },
+        sm: { min: '630px' },
+        md: { min: '770px' },
+        lg: { min: '1023px' },
+        xl: { min: '1279px' },
       },
       animation: {
         'reverse-spin': 'reverse-spin 2s linear infinite',
