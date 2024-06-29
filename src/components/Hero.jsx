@@ -1,27 +1,25 @@
-import { Link } from 'react-router-dom';
-
-const Hero = () => {
+import PropTypes from 'prop-types';
+const Hero = ({
+  title = 'Become a empyoyee or employer  now!',
+  subtitle = 'Find the job that fits your skill set',
+}) => {
   return (
-    <section className='relative h-72 bg-blue-500 flex flex-col justify-center align-center text-center space-y-4 mb-4'>
-      <div className='hero absolute top-0 left-0 w-full h-full opacity-10 bg-no-repeat bg-center'></div>
-
-      <div className='z-10'>
-        <h1 className='text-6xl font-bold uppercase text-white'>
-          Gigs<span className='text-black'>Hub</span>
-        </h1>
-        <p className='text-2xl text-gray-200 font-bold my-4'>
-          Find or post jobs & projects
-        </p>
-        <div>
-          <Link
-            to='/register'
-            className='inline-block border-2 border-white text-white py-2 px-4 rounded-xl transition-all   uppercase mt-2 hover:text-black hover:border-primary-color'
-          >
-            Sign Up to Post a Gig
-          </Link>
+    <section className='bg-gray-900 py-20 mb-4'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center'>
+        <div className='text-center px-4'>
+          <h1 className='text-2xl font-extrabold text-white sm:text-3xl md:text-4xl capitalize'>
+            {title}
+          </h1>
+          <p className='my-4 text-xl text-white'>{subtitle}</p>
         </div>
       </div>
     </section>
   );
 };
+
+Hero.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+};
+
 export default Hero;

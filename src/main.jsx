@@ -11,17 +11,20 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import SingleJob from './pages/SingleJob';
-import ManageJobs from './pages/Manage';
-import EditJob from './pages/EditJob';
-import CreateJob from './pages/CreateJob';
-import CreateCompanyProfile from './pages/Company.jsx';
-import EditCompanyProfile from './pages/EditCompany.jsx';
-import Profile from './pages/EditProfile.jsx';
-import LandingPage from './pages/LandingPage.jsx';
+import  {
+  Home,
+  Login,
+  Register,
+  SingleJob,
+  ManageJobs,
+  EditJob,
+  CreateJob,
+  CreateCompanyProfile,
+  EditCompanyProfile,
+  Profile,
+  LandingPage,
+} from './pages';
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
