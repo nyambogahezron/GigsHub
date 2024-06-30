@@ -2,7 +2,9 @@ import FormInputRow from '../components/FormInputRow';
 import { useState, useEffect } from 'react';
 import Header from '../components/PageHeader';
 import CustomButton from '../components/CustomButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
   useEffect(() => {
@@ -11,15 +13,31 @@ const Profile = () => {
       document.title = 'GIGSHUB - Find | Post Jobs';
     };
   }, []);
-  const [UserName, setUserName] = useState('');
-  const [UserEmail, setUserEmail] = useState('');
+  const { userInfo } = useSelector((state) => state.auth);
+  const [UserName, setUserName] = useState(userInfo?.name || '');
+  const [UserEmail, setUserEmail] = useState(userInfo?.email || '');
   const [password, setPassword] = useState('');
   const [ConfirmPassword, setConfirmPassword] = useState('');
+ 
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(UserName, UserEmail, password);
-  };
+
+    if (password !== ConfirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+    
+    const res = await fetch('http://localhost:5000/api/v1/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ UserName, UserEmail, password }),
+    });
+    const data = await res.json();
+    }
+  
   return (
     <main>
       <div className='mx-4'>

@@ -30,7 +30,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className='border-gray-200 bg-gray-900'>
+    <nav className='border-gray-200 bg-gray-900 py-2 mb-2'>
       <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
         <Link to='/home' className='flex items-center space-x-3 rtl:space-x-reverse'>
           <Logo />
@@ -53,7 +53,7 @@ const NavBar = () => {
             {/* <!-- Dropdown menu --> */}
             <div
               className={`absolute flex flex-col justify-start top-6 right-14 md:right-0 w-48 transition-all z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
-                showDropdown ? '' : 'hidden'
+                showDropdown ? 'z-[999]' : 'hidden'
               }`}
             >
               {userInfo ? (
@@ -61,10 +61,10 @@ const NavBar = () => {
                   <Link to='/profile'>
                     <div className='flex flex-col items-start px-6 py-3 gap-2 transition-all hover:bg-gray-600'>
                       <span className='block text-sm text-gray-900 dark:text-white'>
-                        Bonnie Green
+                        {userInfo?.name}
                       </span>
                       <span className='block text-sm  text-gray-500 truncate dark:text-gray-400'>
-                        name@flowbite.com
+                      {userInfo?.email}
                       </span>
                     </div>
                   </Link>
@@ -83,20 +83,20 @@ const NavBar = () => {
                 {userInfo ? (
                   <>
                     <li className='w-full items-start'>
-                      <a
-                        href='#'
+                      <Link
+                        to='/manage'
                         className='flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'
                       >
                         Dashboard
-                      </a>
+                      </Link>
                     </li>
                     <li className='w-full items-start'>
-                      <a
-                        href='#'
+                      <Link
+                        to='/profile'
                         className='flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'
                       >
                         Profile
-                      </a>
+                      </Link>
                     </li>
 
                     <li className='w-full items-start'>

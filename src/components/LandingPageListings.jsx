@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Spinner from '../components/Spinner';
 import ListingCard from './ListingCard';
+import ViewAllJobs from './ViewAllJobs';
 
 const LandingPageListings = () => {
   const [gigsListData, setGigsListData] = useState([]);
@@ -37,8 +38,10 @@ const LandingPageListings = () => {
     return <div>No gigs found with</div>;
   }
   return (
-    <section className='bg-blue-50 px-4 py-10'>
+    <section className='bg-blue-50 px-4 py-10 z-50 overflow-hidden'>
       {isLoading && <Spinner loading={isLoading} />}
+
+      <>
       <div className='job-container'>
         {gigsListData.map((item) => {
           const { _id, image, title, position, jobLocation, tags } = item;
@@ -57,6 +60,9 @@ const LandingPageListings = () => {
           );
         })}
       </div>
+      
+      <ViewAllJobs />
+      </>
     </section>
   );
 };

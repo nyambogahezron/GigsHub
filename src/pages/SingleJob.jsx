@@ -3,6 +3,8 @@ import SearchBox from '../components/SearchBox';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa6';
+import Spinner from '../components/Spinner';
+
 
 const SingleJob = () => {
   const [jobListData, setJobListData] = useState([]);
@@ -43,40 +45,39 @@ const SingleJob = () => {
     console.error('Error fetching gigs data:');
     return <div>Something went wrong...</div>;
   }
-  // const { image, title, company, location, tags, description, jobType, email, website } = jobListData;
+  const { image, title, company, location, tags, description, jobType, email, website } = jobListData;
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <Spinner/>
       ) : (
         <main>
-          <SearchBox />
           <Link
             to='/home'
-            className='flex baseline items-center justify-start transition-all  hover:text-blue-500 text-black bg-grey-500 ml-4 mb-4 '
+            className='flex baseline items-center justify-start transition-all  hover:text-blue-500 text-black bg-grey-500 ml-4 mb-4 p-3'
           >
             <span>
               <FaArrowLeft />
             </span>
-            <span> Back</span>
+            <span>Go Back</span>
           </Link>
 
-          <div className='mx-4'>
+          <div className='mx-4 w-full'>
             <div className='bg-gray-50 border border-gray-200 p-10 rounded'>
               <div className='flex flex-col items-center justify-center text-center'>
                 <img
                   className='w-48 mr-6 mb-6'
-                  src={jobListData.image}
-                  alt={jobListData.company}
+                  src={image}
+                  alt={company}
                 />
 
-                <h3 className='text-2xl mb-2'>{jobListData.title}</h3>
+                <h3 className='text-2xl mb-2'>{title}</h3>
                 <div className='text-xl font-bold mb-4'>
-                  {jobListData.company}
+                  {company}
                 </div>
                 <ul className='flex'>
-                  {Array.isArray(jobListData.tags) &&
-                    jobListData.tags.map((tag) => (
+                  {Array.isArray(tags) &&
+                    tags.map((tag) => (
                       <li
                         className='flex items-center justify-center text-white rounded-xl py-1 px-3 mr-2 text-xs transition ease-in-out delay-150 bg-blue-500  hover:scale-110 hover:bg-indigo-500 duration-300'
                         key={tag.id}
@@ -87,17 +88,17 @@ const SingleJob = () => {
                 </ul>
                 <div className='text-lg my-4'>
                   <i className='fa-solid fa-location-dot'></i>{' '}
-                  {jobListData.location}
+                  {location}
                 </div>
                 <div className='border border-gray-200 w-full mb-6'></div>
                 <div>
                   <h3 className='text-3xl font-bold mb-4'>Job Description</h3>
                   <div className='text-lg space-y-6'>
-                    <p>{jobListData.description}</p>
-                    <p className='mt-2 mb-1'>{jobListData.jobType}</p>
+                    <p>{description}</p>
+                    <p className='mt-2 mb-1'>{jobType}</p>
 
                     <a
-                      href={jobListData.email}
+                      href={email}
                       target='_blank'
                       rel='noopener noreferrer'
                       className='block bg-primary-color text-white mt-6 py-2 rounded-xl hover:opacity-80'
@@ -106,7 +107,7 @@ const SingleJob = () => {
                     </a>
 
                     <a
-                      href={jobListData.website}
+                      href={website}
                       target='_blank'
                       rel='noopener noreferrer'
                       className='block bg-black text-white py-2 rounded-xl hover:opacity-80'

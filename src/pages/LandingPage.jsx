@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import Hero from '../components/Hero';
 import HomeCards from '../components/HomeCards';
-import ViewAllJobs from '../components/ViewAllJobs';
 import LandingPageListings from '../components/LandingPageListings';
 import LandingPageNavbar from '../components/LandingPageNavbar';
 const LandingPage = () => {
@@ -12,12 +11,11 @@ const LandingPage = () => {
     };
   }, []);
   return (
-    <section className='relative w-screen bg-gray-700 flex flex-col justify-center align-center text-center z-50'>
+    <section className='container relative  bg-gray-700 flex flex-col justify-center align-center text-center z-[999] overflow-hidden'>
       <LandingPageNavbar />
       <Hero />
       <HomeCards />
       <LandingPageListings />
-      <ViewAllJobs />
       <div className='hero absolute top-0 left-0 w-full h-full opacity-10 bg-no-repeat bg-center'></div>
     </section>
   );
