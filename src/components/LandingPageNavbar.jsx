@@ -4,7 +4,7 @@ import Logo from './Logo';
 const LandingPageNavbar = () => {
   return (
     <nav className='bg-gray-900 border-b  z-50'>
-      <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
+      <div className='mx-auto px-2 sm:px-6 lg:px-8'>
         <div className='flex h-20 items-center justify-between'>
           <div className='flex flex-1 items-center justify-between '>
             <NavLink className='flex flex-shrink-0 items-center ml-2' to='/'>

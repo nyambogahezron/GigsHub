@@ -9,6 +9,9 @@ import CreateCompanyProfile from './Company.jsx';
 import EditCompanyProfile from './EditCompany.jsx';
 import Profile from './EditProfile.jsx';
 import LandingPage from './LandingPage.jsx';
+import AboutUs from './AboutUs.jsx';
+import ContactUs from './ContactUs.jsx';
+
 
 export {
   Home,
@@ -22,4 +25,6 @@ export {
   EditCompanyProfile,
   Profile,
   LandingPage,
+  AboutUs,
+  ContactUs
 };

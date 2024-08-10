@@ -23,6 +23,8 @@ import  {
   EditCompanyProfile,
   Profile,
   LandingPage,
+  AboutUs,
+  ContactUs
 } from './pages';
 
 
@@ -32,6 +34,8 @@ const router = createBrowserRouter(
       <Route path='/' element={<LandingPage />} />
       <Route path='/' element={<App />}>
         <Route path='/home' element={<Home />} />
+        <Route path='/about-us' element={<AboutUs />} />
+        <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/job-detail/:id' element={<SingleJob />} />
