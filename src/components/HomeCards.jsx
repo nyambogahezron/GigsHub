@@ -3,9 +3,9 @@ import Card from './Card';
 
 const HomeCards = () => {
   return (
-    <section className='py-4 z-50 mx-w-[1200px]'>
-      <div className='container-xl lg:container m-auto px-1 ml-[-15px]'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 p-4  rounded-lg'>
+    <section className='py-4 z-50 mx-w-[1200px] flex items-center justify-center'>
+      <div className='container-xl lg:container px-1 ml-[-15px]'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 p-4  rounded-lg m-auto'>
           <Card>
             <h2 className='text-2xl font-bold'>For Employees</h2>
             <p className='mt-4 mb-4'>

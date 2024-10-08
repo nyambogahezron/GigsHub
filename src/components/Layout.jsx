@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     <section className='mb-0 dark'>
       <ToastContainer />
       <NavBar />
-      {children}
+      <div className='min-h-[42vh]'>{children}</div>
       <Footer />
     </section>
   );
